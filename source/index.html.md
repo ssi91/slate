@@ -88,7 +88,7 @@ password | | true | Must contain at least four chars.
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all users.
 
 ### HTTP Request
 
@@ -120,3 +120,102 @@ This endpoint retrieves a specific user.
 Parameter | Description
 --------- | -----------
 UUID | The UUID of the user to retrieve
+
+
+# User's Profile
+
+## Create A User's Profile
+
+```shell
+curl -X PUT http://127.0.0.1:8000/api/v1/users/f8bf245e-7b5c-48f1-a178-fab9177155db/profile/ -H 'Content-Type: application/json'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "user_id": "f8bf245e-7b5c-48f1-a178-fab9177155db",
+    "username": null,
+    "email": "ssi@mail.com",
+    "birth_date": null,
+    "avatar": "http://127.0.0.1:8000/media/avatar.png",
+    "position": null,
+    "city": null,
+    "country": null,
+    "gender": null,
+    "orientation": null,
+    "interests": [],
+    "description": ""
+}
+```
+
+This endpoint creates profile of the user.
+
+### HTTP Request
+
+`PUT /api/v1/users/<UUID>/profile/`
+
+## Edit A User's Profile
+
+```shell
+curl -X PATCH \
+  http://127.0.0.1:8000/api/v1/users/f8bf245e-7b5c-48f1-a178-fab9177155db/profile/ \
+  -H 'Content-Type: application/json' \
+  -d '{"username": "test"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "user_id": "f8bf245e-7b5c-48f1-a178-fab9177155db",
+    "username": "test",
+    "email": "ssi@mail.com",
+    "birth_date": null,
+    "avatar": "http://127.0.0.1:8000/media/avatar.png",
+    "position": null,
+    "city": null,
+    "country": null,
+    "gender": null,
+    "orientation": null,
+    "interests": [],
+    "description": ""
+}
+```
+
+This endpoint edit profile of the user.
+
+### HTTP Request
+
+`PATCH /api/v1/users/<UUID>/profile/`
+
+## Get Profile of the Specific User
+
+```shell
+curl -X GET http://127.0.0.1:8000/api/v1/users/f8bf245e-7b5c-48f1-a178-fab9177155db/profile/
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "user_id": "f8bf245e-7b5c-48f1-a178-fab9177155db",
+    "username": "test",
+    "email": "ssi@mail.com",
+    "birth_date": null,
+    "avatar": "http://127.0.0.1:8000/media/avatar.png",
+    "position": null,
+    "city": null,
+    "country": null,
+    "gender": null,
+    "orientation": null,
+    "interests": [],
+    "description": ""
+}
+```
+
+This endpoint retrieves profile of the specific user.
+
+### HTTP Request
+
+`GET /api/v1/users/<UUID>/profile/`
