@@ -236,6 +236,20 @@
               </ul>
           </li>
           <li>
+            <a href="#user-39-s-profile" class="toc-h1 toc-link" data-title="User's Profile">User's Profile</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-user-39-s-profile" class="toc-h2 toc-link" data-title="Create A User's Profile">Create A User's Profile</a>
+                  </li>
+                  <li>
+                    <a href="#edit-a-user-39-s-profile" class="toc-h2 toc-link" data-title="Edit A User's Profile">Edit A User's Profile</a>
+                  </li>
+                  <li>
+                    <a href="#get-profile-of-the-specific-user" class="toc-h2 toc-link" data-title="Get Profile of the Specific User">Get Profile of the Specific User</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -322,7 +336,7 @@ You must replace <code>&lt;access token&gt;</code> with your personal Access Tok
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
+<p>This endpoint retrieves all users.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET /api/v1/users/</code></p>
 <h2 id='get-a-specific-user'>Get a Specific User</h2>
@@ -353,6 +367,78 @@ You must replace <code>&lt;access token&gt;</code> with your personal Access Tok
 <td>The UUID of the user to retrieve</td>
 </tr>
 </tbody></table>
+<h1 id='user-39-s-profile'>User&#39;s Profile</h1><h2 id='create-a-user-39-s-profile'>Create A User&#39;s Profile</h2><pre class="highlight shell tab-shell"><code>curl -X PUT http://127.0.0.1:8000/api/v1/users/f8bf245e-7b5c-48f1-a178-fab9177155db/profile/ -H <span class="s1">'Content-Type: application/json'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f8bf245e-7b5c-48f1-a178-fab9177155db"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ssi@mail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"birth_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://127.0.0.1:8000/media/avatar.png"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"interests"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates profile of the user.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT /api/v1/users/&lt;UUID&gt;/profile/</code></p>
+<h2 id='edit-a-user-39-s-profile'>Edit A User&#39;s Profile</h2><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
+  http://127.0.0.1:8000/api/v1/users/f8bf245e-7b5c-48f1-a178-fab9177155db/profile/ <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{"username": "test"}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f8bf245e-7b5c-48f1-a178-fab9177155db"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ssi@mail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"birth_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://127.0.0.1:8000/media/avatar.png"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"interests"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint edit profile of the user.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>PATCH /api/v1/users/&lt;UUID&gt;/profile/</code></p>
+<h2 id='get-profile-of-the-specific-user'>Get Profile of the Specific User</h2><pre class="highlight shell tab-shell"><code>curl -X GET http://127.0.0.1:8000/api/v1/users/f8bf245e-7b5c-48f1-a178-fab9177155db/profile/
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f8bf245e-7b5c-48f1-a178-fab9177155db"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ssi@mail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"birth_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://127.0.0.1:8000/media/avatar.png"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"interests"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves profile of the specific user.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET /api/v1/users/&lt;UUID&gt;/profile/</code></p>
 <h1 id='errors'>Errors</h1>
 <table><thead>
 <tr>
